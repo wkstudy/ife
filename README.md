@@ -1,6 +1,6 @@
 #步骤
 ## npm 安装
-*（关于npm的知识推荐看这个https://my.oschina.net/dkvirus/blog/1138568）<br>
+* 关于npm的知识推荐看这个https://my.oschina.net/dkvirus/blog/1138568<br>
 * 由于新版的nodejs已经集成了npm，所以直接下载node.js(推荐下载最新的LTS版本)<br>
 * 执行 cmd， 输入npm -v查看npm是否安装成功
 ## parcel安装
