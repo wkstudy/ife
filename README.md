@@ -1,4 +1,4 @@
-#步骤
+# 步骤
 ## npm 安装
 * 关于npm的知识推荐看这个https://my.oschina.net/dkvirus/blog/1138568<br>
 * 由于新版的nodejs已经集成了npm，所以直接下载node.js(推荐下载最新的LTS版本)<br>
@@ -32,3 +32,16 @@ npm install babel-preset-env --save-dev
 * helloworld目录下执行npm run build （dist文件夹里就是打包出来的）
 # 结果
 有点问题，结果勉强出来，有错，待日后改正
+
+# 2018.4.30 修改
+* 程序正确运行
+* 主要改动为：改变了san的引入方式：
+> 原来的方式为：(自己尝试用npm引入san，实际上没有成功，导致index.js还要再"import san from 'san';")
+```
+<script type="text/javascript" src="node_modules/san/dist/san.dev.js"></script>
+```
+> 现在方式为：（结果正确）
+```
+<script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+```
+

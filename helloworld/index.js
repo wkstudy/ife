@@ -1,7 +1,3 @@
-
-import san from 'san';
-
-
 var MyApp = san.defineComponent({
     template: '<div class=\'hello\'>{{msg}}</div>',
 
