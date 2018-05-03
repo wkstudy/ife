@@ -1,0 +1,36 @@
+{
+  "name": "1.2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "webpack-cli": "^2.1.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "css-loader": "^0.28.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-template": "^6.2.0",
+    "san": "^3.5.7",
+    "san-loader": "0.0.7",
+    "san-router": "^1.2.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.6.0",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack  --mode production --progress  --display-modules  --colors --display-reason --watch",
+    "dev": "webpack --mode development --progress  --display-modules  --colors --display-reason --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
