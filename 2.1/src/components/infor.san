@@ -1,0 +1,85 @@
+<template>
+	<div style='margin-left:30px;margin-top:30px;'>
+		<div class='top'>
+			<input type='text' placeholder='姓名(string)' value='{=name=}' on-keyup='alter()' style="{{flag_name}}"/>
+			<input type='text' placeholder='年龄(number)' value='{=age=}' on-keyup='alter()' style="{{flag_age}}"/>
+			<input type='text' placeholder='简介(string)' value='{=summary=}' on-keyup='alter()' style="{{flag_summary}}"/>
+		</div>
+		<div class='mid'>
+			信息：<span on-click="move()">移除信息</span>
+		</div>
+		<div class='btm'>
+			姓名：<span>{{name_info}}</span>
+			年龄：<span>{{age_info}}</span>
+			简介：<span>{{summary_info}}</span>
+		</div>
+	</div>
+</template>
+
+
+<script>
+	import san, {DataTypes} from 'san';
+    export default {
+	    initData () {
+	        return {
+	            name:'',
+	            age:0,
+	            summary:'',
+	            name_info:'',
+	            age_info:0,
+	            summary_info:''
+	        };
+	    },
+	    /*
+	    *	dataTypes:{
+	    *		name:DataTypes.string,
+	    *		age:DataTypes.number,
+	    *		summary:DataTypes.string
+	    *	},
+	    *此种方法验证，一旦不是数字，就会导致需要按两次“移除信息”才能清除所有信息
+	    */
+	    move:function(){
+	    	this.data.set('name','');
+	    	this.data.set('age',undefined);
+	    	this.data.set('summary','');
+	    	this.data.set('name_info','');
+	    	this.data.set('age_info',undefined);
+	    	this.data.set('summary_info','');
+
+
+	    	//将红色边框移除
+    		this.data.set('flag_age','border-color:black');    		
+    		this.data.set('flag_name','border-color:black');
+    		this.data.set('flag_summary','border-color:black');
+	    	
+
+	    },
+	    alter:function(){
+	    	//同步name、age、summary
+	     	var name = this.data.get('name');
+	      	var age = this.data.get('age');
+	       	var summary = this.data.get('summary');
+	    	this.data.set('name_info',name);
+	    	this.data.set('age_info',age);
+	    	this.data.set('summary_info',summary);
+
+	    	//判断数据类型是否正确
+	    	if(!isNaN(age)){
+	    		this.data.set('flag_age','border-color:black');
+	    	}else{
+	    		this.data.set('flag_age','border-color:red');
+	    	}
+	    	if(typeof(name)==string){
+	    		this.data.set('flag_name','border-color:black');
+	    	}else{
+	    		this.data.set('flag_name','border-color:red');
+	    	}
+	    	if(typeof(summary)==string){
+	    		this.data.set('flag_summary','border-color:black');
+	    	}else{
+	    		this.data.set('flag_summary','border-color:red');
+	    	}
+
+	    },
+    }
+</script>
