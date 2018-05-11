@@ -1,0 +1,113 @@
+<template>
+<div>
+	<button id="post" on-click='add'>添加</button>
+	<table border="1" cellspacing="0" cellpadding="0">
+		<thead>
+			<th>姓名</th>
+			<th>审核状态</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+			<template s-for="p,index in infos">
+				<tr>
+					<td>{{p.name}}</td>
+					<template s-if='p.status < 1'>
+						<td>不合格</td>
+					</template>
+					<template s-elif='p.status > 1'>
+						<td>合格</td>
+					</template>
+					<template s-else>
+						<td>待审核</td>
+					</template>
+					<td>
+						<button s-if='p.operation < 1' on-click='alterStatus(p.id)'>审核</button>
+						<button s-else on-click='del($event)' value="{{p.id}}">删除</button>
+					</td>
+				</tr>
+			</template>
+		</tbody>
+	</table>
+</div>
+</template>
+
+<script>
+	import san, {DataTypes} from 'san';
+    export default {
+	    initData () {
+	        return {
+	          	infos:[
+	          		{
+	          			id:0,
+	          			name:"张三",
+	          			status:'2',
+	          			operation:'1'
+	          		},{
+	          			id:1,
+	          			name:'李四',
+	          			status:'0',
+	          			operation:'1'
+	          		},{
+	          			id:2,
+	          			name:'王五',
+	          			status:'1',
+	          			operation:'0'
+	          		},{
+	          			id:3,
+	          			name:'赵六',
+	          			status:'1',
+	          			operation:'0'
+	          		},{
+	          			id:4,
+	          			name:'孙七',
+	          			status:'1',
+	          			operation:'0'
+	          		}
+	          	]
+	        };
+	    },
+	    add:function(){
+	    	var a =this.data.get('infos');
+	    	var i=a[a.length-1].id+1;
+	    	console.log(i);
+	    	this.data.push('infos', {id:i,name: 'default',status:'1',operation:'0'});
+	    	
+	    	console.log(a);
+	    },
+	    del:function(e){
+	    	var temp=e.target.value;
+	    	var a =this.data.get('infos');
+	    	var i;
+	    	for(i=0;i<a.length; i++){
+	    		if(a[i].id==temp){
+	    			break;
+	    		}
+	    	}
+	    	this.data.removeAt('infos',i );
+	    	
+	    	console.log(a);
+	    },
+	    alterStatus:function(tid){
+	    	var arr=[];
+	    	var a =this.data.get('infos');
+	    	for( var i=0;i<a.length;i++){
+	    		var obj=new Object();
+	    		obj.id=a[i].id;
+    			obj.name=a[i].name;
+    			obj.status=a[i].status;
+    			obj.operation=a[i].operation;
+
+	    		if(a[i].id==tid){
+	    			obj.status=2;	    			
+	    		}
+	    		arr.push(obj);
+	    	}
+	    	this.data.merge('infos',arr);
+	    }
+	    /*
+	    *审核状态：1待审核 0不合格 2 合格	
+	    *操作：0审核 1删除
+	    */
+	    
+    }
+</script>

@@ -59,5 +59,5 @@ npm i html-webpack-plugin --save-dev
 
 
 
-* 注意
+* 犯过的错
 每个san文件中需要有一个root element，即存在一个最高级别的tag来包含所有其他的tag
