@@ -1,0 +1,33 @@
+<template>
+	<div id="main">
+		<div  style="{{colors? 'background: '+colors:'background:red'}};width:100px;height:100px;margin-bottom:50px;" on-click='change()'></div>
+
+		<div  style="background:red;width:100px;height:100px" class="{{isclick? 'bgblue':''}}" on-click='classchange()'></div>
+	</div>
+</template>
+<style>
+	#main{
+		width:800px;
+		height: 800px;
+		border-radius: 50%;
+		border:1px solid black;
+	}
+	.bgblue{
+		background-color: blue!important;
+	}
+</style>
+<script>
+	 export default {
+	 	initData () {
+	 		return {
+	 			color:undefined
+	 		}
+	 	},
+	    change:function(){
+	    	this.data.set('colors','blue');
+	    },
+	    classchange:function(){
+	    	this.data.set('isclick',true);
+	    }
+	}
+</script>
