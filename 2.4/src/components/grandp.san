@@ -1,0 +1,41 @@
+<template>
+	<div>
+		<div>
+			<ui-parent  parentInfo='{{grandparent_info}}'></ui-parent>
+		</div>
+		<div class="grandparent">
+			我是更高层父组件：<input type="text" placeholder="我也静静等待用户输入" value="{= grandparent_info =}" class="{{flag == 1 ? 'inputColoR':''}}">
+		</div>
+	</div>
+</template>
+<script>
+	import parent from './parent.san'
+	export default{
+		initData() {
+	        return {
+	           flag:0
+	        };
+    	},
+		components: {
+	        'ui-parent': parent
+	    },
+	    messages:{
+	    	'son-i-another':function(arg){
+	    		var value=arg.value;
+	    		this.data.set('flag',1);
+	    		this.data.set('grandparent_info',value);
+	    	}
+	    }
+
+	}
+</script>
+
+<style>
+.grandparent{
+	color:purple;
+}
+.inputColoR{
+	color:#C8E3EE;
+}
+</style>
+	 

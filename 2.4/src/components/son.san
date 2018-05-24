@@ -1,0 +1,23 @@
+<template>
+	<div>
+		子组件：<input type='text' value="{= info =}">
+		<button on-click='post()'>通知父组件</button>
+	</div>
+</template>
+
+
+<script>
+	export default {
+		post(){
+			let value=this.data.get('info');
+			this.dispatch('son-i',value);
+			this.dispatch('son-i-another',value);
+		},
+		inited(){
+			this.data.set('info','');
+		}
+	}
+</script>
+<style>
+
+</style>
